@@ -27,5 +27,4 @@ def factors():
                 print("{}={}*1".format(number, number))
 
 
-
 factors()
