@@ -15,7 +15,7 @@ def factors():
             print("{:d}=".format(number), end="")
 
             if number % 2 == 0:
-                print("{}*2".format(int(math.floor(number))))
+                print("{}*2".format(number // 2))
                 continue
 
             odd = int(math.sqrt(number))
@@ -24,7 +24,7 @@ def factors():
 
             for x in range(3, odd + 1, 2):
                 if number % x == 0:
-                    print("{}*{}".format(x, int(math.floor(number))))
+                    print("{}*{}".format(x, number // 2))
                     break
             if number % x != 0:
                 print("{}={}*1".format(number, number))
