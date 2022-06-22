@@ -39,6 +39,6 @@ else
 	while read -r i
 	do
 		result=$(factor "$i")
-		check_factor "$result"
+		check_factor $result
 	done < "$1"
 fi
