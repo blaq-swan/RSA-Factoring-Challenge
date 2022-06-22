@@ -1,6 +1,6 @@
 #!/usr/bin/bash
-# A script to find factors of a number from a file
-
+#@factors-script
+# A script to find factors of natural numbers
 
 check_factor()
 {
