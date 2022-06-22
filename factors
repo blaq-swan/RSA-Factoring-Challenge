@@ -1,30 +1,60 @@
-#!/usr/bin/python3
-
-from sys import argv as arg
-from math import sqrt as sr
+#!/usr/bin/bash
 
 
-def factors():
-    with open(arg[1]) as file:
-        for line in file:
-            number = int(line)
+check_factor()
+{
+	if [ $# -ne 3 ];
+	then
+		args=("$@")
+		count=0
+		num2=1
+		for x in ${args[*]};
+		do
+			if [ $count -gt 1 ];
+			then
+				num2=$(echo $x*$num2 | bc)
+			fi
+			count=$((count + 1))
+		done
+	else
+		num2=$3
+	fi
+	num1=$2
+	num=$(echo "$1" | tr ':' '=')
 
-            print("{:d}=".format(number), end="")
+	result=$(echo "if($num2 > $num1) 1 else 0" | bc)
+			if ((result == 1)); then
+				numcp=$num1
+				num1=$num2
+				num2=$numcp
+			fi
+		echo "$num$num1*$num2"
+}
 
-            if number % 2 == 0:
-                print("{}*2".format(number // 2))
-                continue
-
-            odd = int(sr(number))
-            if odd % 2 == 0:
-                odd += 1
-
-            for x in range(3, odd + 1, 2):
-                if number % x == 0:
-                    print("{}*{}".format(x, number // x))
-                    break
-            if number % x != 0:
-                print("{}={}*1".format(number, number))
+if [ $# -ne 1 ]
+then
+	echo 'Usage: factors.sh <file>'
+	exit 1
+else
+	while read i
+	do
+		result=$(factor "$i")
+		check_factor $result
+	done < "$1"
+fi
 
 
-factors()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
