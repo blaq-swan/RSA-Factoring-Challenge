@@ -8,11 +8,11 @@ check_factor()
 		args=("$@")
 		count=0
 		num2=1
-		for x in ${args[@]};
+		for x in "${args[@]}";
 		do
 			if [ $count -gt 1 ];
 			then
-				num2=$(echo $x*$num2 | bc)
+				num2=$(echo "$x"*$num2 | bc)
 			fi
 			count=$((count + 1))
 		done
@@ -36,9 +36,9 @@ then
 	echo 'Usage: factors.sh <file>'
 	exit 1
 else
-	while read i
+	while read -r i
 	do
 		result=$(factor "$i")
-		check_factor $result
+		check_factor "$result"
 	done < "$1"
 fi
