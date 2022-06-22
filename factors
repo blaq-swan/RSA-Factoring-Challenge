@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# A script to find factors of a number from a file
 
 
 check_factor()
