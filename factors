@@ -1,6 +1,4 @@
-#!/usr/bin/bash
-#@factors-script
-# A script to find factors of natural numbers
+#!/usr/bin/env bash
 
 check_factor()
 {
